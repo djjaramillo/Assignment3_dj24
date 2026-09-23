@@ -53,9 +53,9 @@ if (argc != 2)
 void output_array(Array *a)
 {
     // code
- for (int i = 0; i < array->size; i++)
+ for (int i = 0; i < a->size; i++)
     {
-        printf("%.1f ", array->data[i]);
+        printf("%.1f ", a->data[i]);
     }
 
     printf("\n");
@@ -64,9 +64,31 @@ void output_array(Array *a)
 void shift_array(Array *a)
 {
     // code
+
+double first = a->data[0];
+
+    for (int i = 0; i < a->size - 1; i++)
+    {
+        a->data[i] = a->data[i + 1];
+    
+}
+    a->data[a->size - 1] = first;
 }
 
 Array *average_adjacent(Array *a)
 {
     // code
+Array *average = malloc(sizeof(Array));
+
+    average->size = a->size / 2;
+    average->data = malloc(average->size * sizeof(double));
+
+    for (int i = 0; i < average->size; i++)
+    {
+        average->data[i] =
+            (a->data[2 * i] + a->data[2 * i + 1]) / 2.0;
+    }
+
+    return average;
+}
 
